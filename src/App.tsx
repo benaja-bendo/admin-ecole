@@ -1,15 +1,12 @@
 import {useState} from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
+import {Typography} from "@mui/joy";
 
 function App() {
-    const [count, setCount] = useState(0)
 
-    return (
-        <div className="text-2xl font-bold">
-            bienvenue dans notre application
-        </div>
-    )
+    return (<>
+        <Typography level={"display1"}>Hello World</Typography>
+    </>)
 }
 
 export default App
