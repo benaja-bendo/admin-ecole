@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    createBrowserRouter,
+    createBrowserRouter
 } from "react-router-dom";
 import Login from "../pages/Login";
 import App from "../App";
@@ -10,7 +10,6 @@ import Parents from "../pages/Parents";
 import WeeklyCalendar from "../pages/WeeklyCalendar";
 import Professor from "../pages/Professor";
 import AdminEcole from "../pages/AdminEcole";
-// import Dashboard from "../pages/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -21,9 +20,6 @@ const router = createBrowserRouter([
                 index: true,
                 path: "dashboard",
                 element: <Dashboard/>,
-                loader: ({request}) => {
-                    console.log(request);
-                }
             },
             {
                 path: "weekly-calendar",
