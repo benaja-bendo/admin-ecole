@@ -3,9 +3,10 @@ import {UserIcon} from "../../icons/UserIcon";
 import {BellIcon} from "../../icons/BellIcon";
 import ButtonLogout from "../ButtonLogout";
 import {User} from "../../models/User";
+import {useSelector} from "react-redux";
 
 export default function Header() {
-    const user = {} as User;
+    const user = useSelector((state: any) => state.user as User);
     return (<div className="text-gray-50 bg-blue-600 shadow flex h-14 w-full z-10">
         <div className="w-64 h-full flex items-center justify-center">
             <button onClick={() => {

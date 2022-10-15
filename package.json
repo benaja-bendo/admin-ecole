@@ -16,12 +16,14 @@
     "@mui/material": "^5.10.8",
     "@reduxjs/toolkit": "^1.8.6",
     "axios": "^1.1.2",
+    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
+    "@types/node": "^18.11.0",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",

@@ -1,11 +1,22 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {BubbleLoading} from "../icons/BubbleLoading";
-import {useNavigate} from "react-router-dom";
+import {useMatches, useNavigate} from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useIsconnect from "../hooks/useIsconnect";
 
 export default function Login() {
-    const {login,loadingLogin,errorLogin} = useAuth();
+    const {login, loadingLogin, errorLogin} = useAuth();
     const navigate = useNavigate();
+    const matches = useMatches();
+    useEffect(() => {
+        if (matches.length != 0 && matches[0].pathname === "login") {
+            console.log("login");
+            // const [isConnect] = useIsconnect()  // <--- this line
+            // if (isConnect) {
+            //     navigate("/");
+            // }
+        }
+    }, [matches, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -14,7 +25,7 @@ export default function Login() {
             password: { value: string };
         };
         const body = {email: email.value, password: password.value};
-        await login(body.email,body.password)
+        await login(body.email, body.password)
     }
 
     return (
