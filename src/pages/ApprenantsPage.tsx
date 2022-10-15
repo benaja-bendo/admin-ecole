@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import http from "../services/http";
 import Layout from "../components/Layout/Layout";
 
-export const Apprenants = () => {
+export const ApprenantsPage = () => {
     const [apprenants, setApprenants] = useState<Apprenant[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -38,5 +38,5 @@ export const Apprenants = () => {
         </div>
     );
 }
-Apprenants.getLayout = (page: any) => <Layout>{page}</Layout>;
-export default Apprenants;
+ApprenantsPage.getLayout = (page: any) => <Layout>{page}</Layout>;
+export default ApprenantsPage;

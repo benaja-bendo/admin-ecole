@@ -2,14 +2,19 @@ import React from "react";
 import {
     createBrowserRouter
 } from "react-router-dom";
-import Login from "../pages/Login";
+import LoginPage from "../pages/LoginPage";
 import App from "../App";
-import Apprenants from "../pages/Apprenants";
-import Dashboard from "../pages/Dashboard";
-import Parents from "../pages/Parents";
-import WeeklyCalendar from "../pages/WeeklyCalendar";
-import Professor from "../pages/Professor";
-import AdminEcole from "../pages/AdminEcole";
+import ApprenantsPage from "../pages/ApprenantsPage";
+import DashboardPage from "../pages/DashboardPage";
+import ParentsPage from "../pages/ParentsPage";
+import WeeklyCalendarPage from "../pages/WeeklyCalendarPage";
+import ProfessorPage from "../pages/ProfessorPage";
+import AdminEcolePage from "../pages/AdminEcolePage";
+import ClassRoomPage from "../pages/ClassRoomPage";
+import MessagePage from "../pages/MessagePage";
+import PublicPage from "../pages/PublicPage";
+import FacturePage from "../pages/FacturePage";
+import SettingsPage from "../pages/SettingsPage";
 
 const router = createBrowserRouter([
     {
@@ -19,33 +24,53 @@ const router = createBrowserRouter([
             {
                 index: true,
                 path: "dashboard",
-                element: <Dashboard/>,
+                element: <DashboardPage/>,
             },
             {
                 path: "weekly-calendar",
-                element: <WeeklyCalendar/>,
+                element: <WeeklyCalendarPage/>,
+            },
+            {
+                path: "classroom",
+                element: <ClassRoomPage/>,
+            },
+            {
+                path: "messages",
+                element: <MessagePage/>,
             },
             {
                 path: "apprenants",
-                element: <Apprenants/>,
+                element: <ApprenantsPage/>,
             },
             {
-                path: "Professor",
-                element: <Professor/>,
-            },
-            {
-                path: "admin-ecole",
-                element: <AdminEcole/>,
+                path: "ProfessorPage",
+                element: <ProfessorPage/>,
             },
             {
                 path: "parents",
-                element: <Parents/>,
+                element: <ParentsPage/>,
+            },
+            {
+                path: "admin-ecole",
+                element: <AdminEcolePage/>,
+            },
+            {
+                path: "public-page",
+                element: <PublicPage/>,
+            },
+            {
+                path: "facture",
+                element: <FacturePage/>,
+            },
+            {
+                path: "settings",
+                element: <SettingsPage/>,
             },
         ]
     },
     {
         path: "login",
-        element: <Login/>,
+        element: <LoginPage/>,
     },
     {
         path: "*",

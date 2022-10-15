@@ -1,7 +1,7 @@
 import http from "../services/http";
 import {JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, useEffect, useState} from "react";
 
-export default function WeeklyCalendar() {
+export default function WeeklyCalendarPage() {
     const [ecole, setEcole] = useState('' as any);
     const [numeroSemaine, setNumeroSemaine] = useState(0 as number);
     const [nameMonth, setNameMonth] = useState('' as string);

@@ -4,7 +4,7 @@ import {useMatches, useNavigate} from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useIsconnect from "../hooks/useIsconnect";
 
-export default function Login() {
+export default function LoginPage() {
     const {login, loadingLogin, errorLogin} = useAuth();
     const navigate = useNavigate();
     const matches = useMatches();

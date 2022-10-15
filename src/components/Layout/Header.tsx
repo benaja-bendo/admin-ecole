@@ -8,18 +8,15 @@ import {useSelector} from "react-redux";
 export default function Header() {
     const user = useSelector((state: any) => state.user as User);
     return (<div className="text-gray-50 bg-blue-600 shadow flex h-14 w-full z-10">
-        <div className="w-64 h-full flex items-center justify-center">
-            <button onClick={() => {
-                console.log('ok')
-            }}
-                    className="px-2 py-1 rounded-md border-2 text-sm text-gray-200 hover:text-blue-900 hover:border-blue-900">
+        <div className="min-w-min sm:w-64 h-full flex items-center justify-center">
+            <button className="px-2 py-1 rounded-md border-2 text-sm text-gray-200 hover:text-blue-900 hover:border-blue-900">
                 <UserIcon/>
                 <span>{user?.name}</span>
             </button>
         </div>
         <div className="flex-1 flex justify-between items-center">
             <div
-                className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
+                className="sm:ml-2 bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
                 <button className="outline-none focus:outline-none">
                     <svg className="w-5 text-gray-600 h-5 cursor-pointer" viewBox="0 0 24 24">
                         <path fill="currentColor"

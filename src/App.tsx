@@ -1,5 +1,5 @@
 import {Outlet, useMatches, useNavigate} from "react-router-dom";
-import Login from "./pages/Login";
+import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout/Layout";
 import {BubbleLoading} from "./icons/BubbleLoading";
 import useIsconnect from "./hooks/useIsconnect";
@@ -17,7 +17,7 @@ function App() {
             <Outlet/>
         </Layout>
         :
-        <Login/>);
+        <LoginPage/>);
 
 }
 
