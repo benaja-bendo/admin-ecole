@@ -54,17 +54,17 @@ export default function WeeklyCalendarPage() {
                 </div>
                 <div className="flex-1 flex flex-col">
                     <div className="h-9  flex justify-evenly items-center">
-                        {nameDays.map((nameDay, index) => {
+                        {nameDays.map((nameDay  : any, index : number) => {
                             return (
                                 <div className={'border flex-1 text-center'} key={index}>{nameDay}</div>);
                         })}
                     </div>
                     <div className="flex-1 flex gap-0.5 justify-evenly">
-                        {weeks[numeroSemaine].map((week, index) => {
+                        {weeks[numeroSemaine].map((week :any, index :number) => {
                             return (<div
                                 className={`flex flex-col flex-1 text-center border ${week?.is_weekend ? 'bg-red-400' : 'bg-blue-100'}`}
                                 key={index}>
-                                {week?.hours.map((hour, index) => {
+                                {week?.hours.map((hour :any, index :number) => {
                                     return (<div key={index}
                                                  className={hour.is_pause ? 'bg-red-600' : ''}>{hour?.event.name}</div>)
                                 })}

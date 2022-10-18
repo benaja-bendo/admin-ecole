@@ -1,4 +1,3 @@
-import * as React from "react";
 import {Link} from "react-router-dom";
 import {ChartBarIcon} from "../../icons/ChartBarIcon";
 import {WeekIcon} from "../../icons/WeekIcon";
@@ -120,7 +119,7 @@ const ListItems = ({items}: { items: any }) => {
             {items.map((item: any, index: number) => {
                 if (item.isTitle) {
                     return (
-                        <li className="px-5 hidden md:block bg-gray-100 "
+                        <li className="px-5 bg-gray-100 "
                             key={index}>
                             <div className="flex flex-row items-center h-8">
                                 <div
