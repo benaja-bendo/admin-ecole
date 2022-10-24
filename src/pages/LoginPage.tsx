@@ -6,11 +6,15 @@ import useIsconnect from "../hooks/useIsconnect";
 
 export default function LoginPage() {
     const {login, loadingLogin, errorLogin} = useAuth();
+    const [isConnect] = useIsconnect();
     const navigate = useNavigate();
     const matches = useMatches();
     useEffect(() => {
         if (matches.length != 0 && matches[0].pathname === "login") {
             console.log("login");
+            if (isConnect) {
+                navigate("/");
+            }
             // const [isConnect] = useIsconnect()  // <--- this line
             // if (isConnect) {
             //     navigate("/");

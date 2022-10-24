@@ -1,5 +1,5 @@
-import {Apprenant} from "../models/Apprenant";
-import {useEffect, useState} from "react";
+import { Apprenant } from "../models/Apprenant";
+import { useEffect, useState } from "react";
 import http from "../services/http";
 import Layout from "../components/Layout/Layout";
 
@@ -11,7 +11,7 @@ export const ApprenantsPage = () => {
     useEffect(() => {
         const fetchApprenants = async () => {
             try {
-                const {data} = await http.get('/users?role=apprenant');
+                const { data } = await http.get('/users?role=apprenant');
                 setApprenants(data.data);
             } catch (error: any) {
                 setError(error.message);
@@ -25,6 +25,9 @@ export const ApprenantsPage = () => {
         <div className="apprenants">
             <div className="container">
                 <h1>Apprenants</h1>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Add
+                </button>
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
                 {apprenants.map((apprenant) => (

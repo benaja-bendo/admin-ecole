@@ -4,7 +4,6 @@ import {userSlice} from "../features/user/userSlice";
 export default configureStore({
         reducer: {
             user: userSlice.reducer
-            // user: userReducer,
             // auth: authReducer,
             // isConnect: isConnectReducer,
             // error: errorReducer
