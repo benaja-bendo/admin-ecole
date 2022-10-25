@@ -10,7 +10,7 @@ import {BellIcon} from "../icons/BellIcon";
 import SynthSeComponent from "../components/SynthèseComponent";
 import NotificationsComponent from "../components/NotificationsComponent";
 
-let ListItemTab = [
+const ListItemTab = [
     {
         label: 'Synthèse',
         icon: <GraphBarIcon/>,
@@ -19,7 +19,17 @@ let ListItemTab = [
         label: 'Notifications',
         icon: <BellIcon/>,
     }
-];
+] as const;
+const ListTapPanel = [
+    {
+        value: 0,
+        component: <SynthSeComponent/>
+    },
+    {
+        value: 1,
+        component: <NotificationsComponent/>
+    }
+] as const;
 
 export default function DashboardPage() {
     return (<CssVarsProvider>
@@ -36,12 +46,11 @@ export default function DashboardPage() {
                 ))}
             </TabList>
             <div className="mt-2">
-                <TabPanel value={0}>
-                    <SynthSeComponent/>
-                </TabPanel>
-                <TabPanel value={1}>
-                    <NotificationsComponent/>
-                </TabPanel>
+                {ListTapPanel.map((item, index) => (
+                    <TabPanel key={index} value={item.value}>
+                        {item.component}
+                    </TabPanel>
+                ))}
             </div>
         </Tabs>
     </CssVarsProvider>);

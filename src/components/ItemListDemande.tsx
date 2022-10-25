@@ -15,17 +15,23 @@ import {
 } from "@mui/joy";
 import {Check, Delete, Info} from "@mui/icons-material";
 import MyModal from "./MyModal";
+import ModalComfirmation from "./ModalComfirmation";
 
 export default function ItemListDemande({title}: { title: string }) {
     const [open, setOpen] = useState<boolean>(false);
+    const [openDelete, setOpenDelete] = useState<boolean>(false);
+    const [openAccept, setOpenAccept] = useState<boolean>(false);
     const handleClickText = () => {
         console.log("click");
     }
     const handleDelete = () => {
         console.log("delete");
+        setOpenDelete(false);
     }
     const handleAccept = () => {
         console.log("accept");
+        setOpenAccept(false);
+        setOpen(false);
     }
     const handleInfo = () => {
         setOpen(true)
@@ -34,10 +40,10 @@ export default function ItemListDemande({title}: { title: string }) {
         <ListItem
             endAction={
                 <div className="flex gap-1">
-                    <IconButton aria-label="Delete" size="sm" color="danger" onClick={handleDelete}>
+                    <IconButton aria-label="Delete" size="sm" color="danger" onClick={() => setOpenDelete(true)}>
                         <Delete/>
                     </IconButton>
-                    <IconButton aria-label={`Accepter`} size="sm" color="success" onClick={handleAccept}>
+                    <IconButton aria-label={`Accepter`} size="sm" color="success" onClick={() => setOpenAccept(true)}>
                         <Check/>
                     </IconButton>
                     <IconButton aria-label={`info`} size="sm" color="info" onClick={handleInfo}>
@@ -46,6 +52,8 @@ export default function ItemListDemande({title}: { title: string }) {
                 </div>
             }>
             <ListItemButton onClick={handleClickText}>{title}</ListItemButton>
+            <ModalComfirmation open={openDelete} handleClose={setOpenDelete} handleConfirm={handleDelete}/>
+            <ModalComfirmation open={openAccept} handleClose={setOpenAccept} handleConfirm={handleAccept}/>
             <MyModal open={open} onClose={setOpen} title="Plus informations">
                 <Sheet>
                     <Sheet
@@ -56,14 +64,13 @@ export default function ItemListDemande({title}: { title: string }) {
                         }}>
                         <img
                             src={"https://via.placeholder.com/150"}
-                            alt="image" className="w-full h-full"/>
-                        <Sheet
-                            sx={{
-                                width: '100%',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: 2,
-                            }}>
+                            alt="user image profile" className="w-full h-full"/>
+                        <Sheet sx={{
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 2,
+                        }}>
                             <Typography textColor="text.tertiary" fontWeight="bold">
                                 Make sure to us
                             </Typography>
@@ -95,7 +102,6 @@ export default function ItemListDemande({title}: { title: string }) {
                     </Box>
                 </Sheet>
             </MyModal>
-
         </ListItem>
     );
 }

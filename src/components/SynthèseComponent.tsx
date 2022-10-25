@@ -11,17 +11,17 @@ import CardTaskComponent from "./CardTaskComponent";
 export default function SynthSeComponent() {
     return (<div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-            <CardTaskComponent icon="" titre="Status" more={false}>
+            <CardTaskComponent icon="" titre="Status" more={false} link="">
                 <div className="h-full flex flex-col justify-center items-center">
                     <img src={completing} alt="completing" height="100" width="100"/>
                     <Typography level="body1" variant="plain" textColor="GrayText">Votre compte est activé</Typography>
                 </div>
             </CardTaskComponent>
             <CardTaskComponent icon={<CheckCircleIcon className="h-full w-full"/>} titre="Demandes"
-                               more={true}>
+                               more={false} link="">
                 <ListDemande listDemande={[{title:'hello'}]} />
             </CardTaskComponent>
-            <CardTaskComponent icon={<TaskIcon/>} titre="Messages reçus" more={true}>
+            <CardTaskComponent icon={<TaskIcon/>} titre="Messages reçus" more={true} link="/messages">
                <ListMessage listMessage={[1,2,3]} />
             </CardTaskComponent>
         </div>

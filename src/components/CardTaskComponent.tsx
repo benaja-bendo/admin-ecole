@@ -1,16 +1,17 @@
 import React from "react";
 import {Button, Typography} from "@mui/joy";
+import {Link} from "react-router-dom";
 
 export default function CardTaskComponent({
                                               icon,
                                               titre,
                                               more = true,
+                                              link = "#",
                                               children
-                                          }: { icon: React.ReactNode, titre: string, more: boolean, children: React.ReactNode })
-{
+                                          }: { icon: React.ReactNode, titre: string, more: boolean, link: string, children: React.ReactNode }) {
     return (<div className="h-80 w-full bg-white shadow-md rounded-md p-4 flex flex-col">
-            <div className="flex">
-                <Typography level="h6" textColor="green" fontWeight="lg">
+            <div className="flex justify-center">
+                <Typography level="h4" textColor="darkseagreen" fontWeight="bold">
                     {titre}
                 </Typography>
             </div>
@@ -18,7 +19,7 @@ export default function CardTaskComponent({
                 {children}
             </div>
             {more && <div className='flex justify-end'>
-                <Button variant="plain">voir tout</Button>
+                <Link to={link} >voir tout</Link>
             </div>}
 
         </div>
