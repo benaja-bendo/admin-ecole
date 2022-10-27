@@ -3,9 +3,11 @@ import LoginPage from "./pages/LoginPage";
 import Layout from "./components/Layout/Layout";
 import {BubbleLoading} from "./icons/BubbleLoading";
 import useIsconnect from "./hooks/useIsconnect";
+import {CssBaseline} from "@mui/material";
+import {CssVarsProvider} from '@mui/joy/styles';
+import React from "react";
 
-
-function App() {
+export default function App() {
     const [isConnect] = useIsconnect();
     if (isConnect === null) {
         return <div className="h-screen w-full grid place-items-center">
@@ -13,12 +15,12 @@ function App() {
         </div>;
     }
     return (isConnect ?
-        <Layout>
-            <Outlet/>
-        </Layout>
+        <CssVarsProvider>
+            <CssBaseline/>
+            <Layout>
+                <Outlet/>
+            </Layout>
+        </CssVarsProvider>
         :
         <LoginPage/>);
-
 }
-
-export default App

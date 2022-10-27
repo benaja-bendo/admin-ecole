@@ -15,6 +15,7 @@ import MessagePage from "../pages/MessagePage";
 import PublicPage from "../pages/PublicPage";
 import FacturePage from "../pages/FacturePage";
 import SettingsPage from "../pages/SettingsPage";
+import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
     {
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <div>404</div>,
+        element: <NotFound/>,
     }
 ], {
     basename: "/"

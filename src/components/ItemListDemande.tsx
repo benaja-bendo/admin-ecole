@@ -56,8 +56,7 @@ export default function ItemListDemande({title}: { title: string }) {
             <ModalComfirmation open={openAccept} handleClose={setOpenAccept} handleConfirm={handleAccept}/>
             <MyModal open={open} onClose={setOpen} title="Plus informations">
                 <Sheet>
-                    <Sheet
-                        sx={{
+                    <Sheet sx={{
                             display: 'flex',
                             gap: 2,
                             mb: 2,
@@ -106,7 +105,7 @@ export default function ItemListDemande({title}: { title: string }) {
     );
 }
 
-export const ListDemande = ({listDemande}: { listDemande: [] }) => {
+export const ListDemande = ({listDemande}: { listDemande: [{ title: string }] | [] }) => {
     return (<List>
         {listDemande.map((item, index) => (
             <ItemListDemande key={index} title={item.title}/>

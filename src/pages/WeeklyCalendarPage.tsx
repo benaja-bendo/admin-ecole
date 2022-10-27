@@ -1,78 +1,84 @@
 import http from "../services/http";
-import {JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, useEffect, useState} from "react";
+import React, {
+    useEffect,
+    useState,
+} from "react";
+import BasicBreadcrumbs from "../components/BasicBreadcrumbs";
+import {Divider, Sheet, Typography} from "@mui/joy";
+import {MonthCalendarModel} from "../models/MonthCalendarModel";
+import {CalendarModel} from "../models/CalendarModel";
+import HeaderCalendar from "../components/CalendarComponents/HeaderCalendar";
+import BodyCalendar from "../components/CalendarComponents/BodyCalendar";
+import {BubbleLoading} from "../icons/BubbleLoading";
+import {getCurrentMonthName, getFullYear, getNumberCurrentMonth} from "../utils/functions";
+import CreateCalendar from "../components/CalendarComponents/CreateCalendar";
 
 export default function WeeklyCalendarPage() {
-    const [ecole, setEcole] = useState('' as any);
-    const [numeroSemaine, setNumeroSemaine] = useState(0 as number);
-    const [nameMonth, setNameMonth] = useState('' as string);
-    const [hours, setHours] = useState([] as any);
-    const [nameDays, setNameDays] = useState([] as any);
-    const [weeks, setWeeks] = useState([[]] as any);
-
-    const getEcole = async () => {
-        const response = await http.get('/ecoles/1')
-        setEcole(response.data.data)
-    }
-    const getCalendar = async () => {
-        const response = await http.get('/calendar/1')
-        const data = response.data.data.calendars_json[0] // recuperer à ce niveau du mois en cours
-        setHours(data.hours)
-        setNameMonth(data.month_name)
-        setNameDays(data.days)
-        setWeeks(data.weeks)
-    }
+    const idEcole = 12;
+    const [loading, setLoading] = useState(true);
+    const [showSheet, setShowSheet] = useState(false);
+    const [schoolYear, setSchoolYear] = useState(getFullYear() as number);
+    const [currentNumberMonth, setCurrentNumberMonth] = useState(getNumberCurrentMonth() as number);
+    const [currentNameMonth, setCurrenNametMonth] = useState(getCurrentMonthName() as string);
+    const [currentNumberWeek, setCurrentNumberWeek] = useState(0 as number);
+    const [calendar, setCalendar] = useState<CalendarModel>([] as any);
+    const [currentMonth, setCurrentMonth] = useState<MonthCalendarModel>({} as MonthCalendarModel);
+    const httpGetCalendar = async (idEcole: number) => {
+        try {
+            const response = await http.get(`/calendar/${idEcole}`);
+            const data = response.data.data.calendars_json;
+            setCalendar(data);
+            setLoading(false);
+        } catch (e: any) {
+            setLoading(false);
+            console.error('error', e);
+            if (e?.response.status === 404) {
+                console.log('404');
+                setShowSheet(true);
+            }
+        }
+    };
     useEffect(() => {
-        getEcole()
-        getCalendar()
-    }, [])
-    return (
-        <div className="container mx-auto px-4">
-            <div className="flex justify-between">
-                <button onClick={() => {
-                    setNumeroSemaine(numeroSemaine - 1)
-                }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
-                        disabled={numeroSemaine === 0}>
-                    semaine précédente
-                </button>
-                <h3 className="text-center text-3xl font-bold">
-                    Emploi du temps de l'école
-                    <span className="text-red-600"> {ecole?.name}</span></h3>
-                <button onClick={() => {
-                    setNumeroSemaine(numeroSemaine + 1)
-                }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50"
-                        disabled={numeroSemaine === weeks.length}>
-                    semaine suivante
-                </button>
+        setCurrentMonth(calendar[currentNumberMonth]);
+    }, [calendar]);
+    useEffect(() => {
+        httpGetCalendar(idEcole);
+    }, []);
+
+    if (loading) {
+        return <div className="h-screen w-full grid place-items-center">
+            <BubbleLoading className="h-14 w-14"/>
+        </div>;
+    } else {
+        if (showSheet) {
+            return <div className="h-screen w-full grid place-items-center">
+                <CreateCalendar/>
             </div>
-            <span>{nameMonth}</span>
-            <div className="flex gap-1">
-                <div className="p-2 border w-24 flex flex-col mt-9">
-                    {hours.map((hour: { is_pause: any; hour: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }, index: Key | null | undefined) => {
-                        return (<div key={index}
-                                     className={hour.is_pause ? 'text-red-600' : 'text-blue-600'}>{hour?.hour}</div>);
-                    })}
-                </div>
-                <div className="flex-1 flex flex-col">
-                    <div className="h-9  flex justify-evenly items-center">
-                        {nameDays.map((nameDay  : any, index : number) => {
-                            return (
-                                <div className={'border flex-1 text-center'} key={index}>{nameDay}</div>);
-                        })}
+        } else {
+            return (<>
+                <BasicBreadcrumbs/>
+                <Sheet
+                    sx={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                    }}>
+                    <Typography level="h3" component="h2" fontWeight="md">
+                        Emploi du temps
+                    </Typography>
+                    <Divider sx={{my: "16px"}}/>
+                    <div className="border rounded-md p-1">
+                        <HeaderCalendar
+                            currentNumberWeek={currentNumberWeek}
+                            setCurrentNumberWeek={setCurrentNumberWeek}
+                            calendar={calendar}
+                            currentNumberMonth={currentNumberMonth}
+                            setCurrentNumberMonth={setCurrentNumberMonth}/>
+                        <BodyCalendar calendar={calendar} currentNumberMonth={currentNumberMonth}/>
                     </div>
-                    <div className="flex-1 flex gap-0.5 justify-evenly">
-                        {weeks[numeroSemaine].map((week :any, index :number) => {
-                            return (<div
-                                className={`flex flex-col flex-1 text-center border ${week?.is_weekend ? 'bg-red-400' : 'bg-blue-100'}`}
-                                key={index}>
-                                {week?.hours.map((hour :any, index :number) => {
-                                    return (<div key={index}
-                                                 className={hour.is_pause ? 'bg-red-600' : ''}>{hour?.event.name}</div>)
-                                })}
-                            </div>)
-                        })}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+                </Sheet>
+            </>)
+        }
+    }
 }

@@ -1,9 +1,9 @@
-import { Apprenant } from "../models/Apprenant";
-import { useEffect, useState } from "react";
+import {Apprenant} from "../models/Apprenant";
+import {useEffect, useState} from "react";
 import http from "../services/http";
-import Layout from "../components/Layout/Layout";
+import BasicBreadcrumbs from "../components/BasicBreadcrumbs";
 
-export const ApprenantsPage = () => {
+export default function ApprenantsPage() {
     const [apprenants, setApprenants] = useState<Apprenant[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -11,7 +11,7 @@ export const ApprenantsPage = () => {
     useEffect(() => {
         const fetchApprenants = async () => {
             try {
-                const { data } = await http.get('/users?role=apprenant');
+                const {data} = await http.get('/users?role=apprenant');
                 setApprenants(data.data);
             } catch (error: any) {
                 setError(error.message);
@@ -21,7 +21,8 @@ export const ApprenantsPage = () => {
         const promise = fetchApprenants();
     }, []);
 
-    return (
+    return (<>
+        <BasicBreadcrumbs/>
         <div className="apprenants">
             <div className="container">
                 <h1>Apprenants</h1>
@@ -39,7 +40,7 @@ export const ApprenantsPage = () => {
                 ))}
             </div>
         </div>
-    );
+    </>);
 }
-ApprenantsPage.getLayout = (page: any) => <Layout>{page}</Layout>;
-export default ApprenantsPage;
+// ApprenantsPage.getLayout = (page: any) => <Layout>{page}</Layout>;
+// export default ApprenantsPage;

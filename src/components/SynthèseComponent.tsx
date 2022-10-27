@@ -1,28 +1,27 @@
 import React from 'react'
 import {TaskIcon} from "../icons/TaskIcon";
-import {Button, IconButton, List, ListItem, ListItemButton, Typography} from "@mui/joy";
+import {Typography} from "@mui/joy";
 import completing from "../assets/completing.png";
-import {Check, Delete, Info} from "@mui/icons-material";
 import {CheckCircleIcon} from "../icons/CheckCircleIcon";
-import ItemListDemande, {ListDemande} from "./ItemListDemande";
+import {ListDemande} from "./ItemListDemande";
 import {ListMessage} from "./ItemListMessage";
 import CardTaskComponent from "./CardTaskComponent";
 
 export default function SynthSeComponent() {
     return (<div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-            <CardTaskComponent icon="" titre="Status" more={false} link="">
+            <CardTaskComponent titre="Status" more={false} link="">
                 <div className="h-full flex flex-col justify-center items-center">
                     <img src={completing} alt="completing" height="100" width="100"/>
                     <Typography level="body1" variant="plain" textColor="GrayText">Votre compte est activé</Typography>
                 </div>
             </CardTaskComponent>
-            <CardTaskComponent icon={<CheckCircleIcon className="h-full w-full"/>} titre="Demandes"
+            <CardTaskComponent titre="Demandes"
                                more={false} link="">
-                <ListDemande listDemande={[{title:'hello'}]} />
+                <ListDemande listDemande={[]}/>
             </CardTaskComponent>
-            <CardTaskComponent icon={<TaskIcon/>} titre="Messages reçus" more={true} link="/messages">
-               <ListMessage listMessage={[1,2,3]} />
+            <CardTaskComponent titre="Messages reçus" more={true} link="/messages">
+                <ListMessage listMessage={[]}/>
             </CardTaskComponent>
         </div>
         <div className="w-full bg-white shadow-md rounded-md p-4">

@@ -1,3 +1,4 @@
+import React from "react";
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab from '@mui/joy/Tab';
@@ -9,6 +10,7 @@ import {GraphBarIcon} from "../icons/GraphBarIcon";
 import {BellIcon} from "../icons/BellIcon";
 import SynthSeComponent from "../components/SynthèseComponent";
 import NotificationsComponent from "../components/NotificationsComponent";
+import BasicBreadcrumbs from "../components/BasicBreadcrumbs";
 
 const ListItemTab = [
     {
@@ -32,8 +34,8 @@ const ListTapPanel = [
 ] as const;
 
 export default function DashboardPage() {
-    return (<CssVarsProvider>
-        <CssBaseline/>
+    return (<>
+        <BasicBreadcrumbs/>
         <Tabs aria-label="Basic tabs" defaultValue={0}>
             <TabList>
                 {ListItemTab.map((item, index) => (
@@ -53,5 +55,5 @@ export default function DashboardPage() {
                 ))}
             </div>
         </Tabs>
-    </CssVarsProvider>);
+    </>);
 }

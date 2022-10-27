@@ -16,6 +16,7 @@
     "@mui/lab": "^5.0.0-alpha.104",
     "@mui/material": "^5.10.10",
     "@mui/system": "5.10.5",
+    "@mui/x-data-grid": "^5.17.8",
     "@reduxjs/toolkit": "^1.8.6",
     "axios": "^1.1.2",
     "dotenv": "^16.0.3",

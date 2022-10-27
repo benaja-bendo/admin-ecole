@@ -52,9 +52,7 @@ export const ItemListNotification = () => {
         <ListItem>
             <ListItemButton>
                 <ListItemContent>Marquer comme lu</ListItemContent>
-                {/*<KeyboardArrowRight fontSize="xl3" sx={{ color: 'text.tertiary' }} />*/}
-                <DoneAllIcon fontSize="lg"/>
-
+                <DoneAllIcon/>
             </ListItemButton>
         </ListItem>
     </div>);
