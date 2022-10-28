@@ -25,7 +25,6 @@ export default function HeaderCalendar(
     }
 ) {
     const currentMonth = calendar[currentNumberMonth];
-    console.log('currentNumberMonth', currentNumberMonth);
     const handleChangeMonth = (type: string): void => {
         if (type === "next") {
             setCurrentNumberMonth(currentNumberMonth + 1);

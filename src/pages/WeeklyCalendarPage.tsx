@@ -14,7 +14,7 @@ import {getCurrentMonthName, getFullYear, getNumberCurrentMonth} from "../utils/
 import CreateCalendar from "../components/CalendarComponents/CreateCalendar";
 
 export default function WeeklyCalendarPage() {
-    const idEcole = 12;
+    const idEcole = 1;
     const [loading, setLoading] = useState(true);
     const [showSheet, setShowSheet] = useState(false);
     const [schoolYear, setSchoolYear] = useState(getFullYear() as number);
@@ -25,10 +25,14 @@ export default function WeeklyCalendarPage() {
     const [currentMonth, setCurrentMonth] = useState<MonthCalendarModel>({} as MonthCalendarModel);
     const httpGetCalendar = async (idEcole: number) => {
         try {
-            const response = await http.get(`/calendar/${idEcole}`);
-            const data = response.data.data.calendars_json;
-            setCalendar(data);
-            setLoading(false);
+            const response = await http.get(`/calendar?ecole_id=${idEcole}`);
+            if (response.data.data.length === 0) {
+                setShowSheet(true);
+            } else {
+                const data = response.data.data[0].calendars_json;
+                setCalendar(data);
+                setLoading(false);
+            }
         } catch (e: any) {
             setLoading(false);
             console.error('error', e);
@@ -75,7 +79,10 @@ export default function WeeklyCalendarPage() {
                             calendar={calendar}
                             currentNumberMonth={currentNumberMonth}
                             setCurrentNumberMonth={setCurrentNumberMonth}/>
-                        <BodyCalendar calendar={calendar} currentNumberMonth={currentNumberMonth}/>
+                        <BodyCalendar
+                            currentNumberWeek={currentNumberWeek}
+                            calendar={calendar}
+                            currentNumberMonth={currentNumberMonth}/>
                     </div>
                 </Sheet>
             </>)

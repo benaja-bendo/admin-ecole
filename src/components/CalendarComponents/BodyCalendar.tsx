@@ -5,11 +5,11 @@ import React from "react";
 import {CalendarModel} from "../../models/CalendarModel";
 
 export default function BodyCalendar({
+                                         currentNumberWeek,
                                          currentNumberMonth,
                                          calendar
-                                     }: { currentNumberMonth: number, calendar: CalendarModel }) {
+                                     }: { currentNumberWeek: number, currentNumberMonth: number, calendar: CalendarModel }) {
     const currentMonth = calendar[currentNumberMonth];
-    console.log('currentMonth', currentMonth);
     if (currentMonth !== undefined) {
         return (<>
             <div className="overflow-y-auto">
@@ -24,20 +24,35 @@ export default function BodyCalendar({
                             );
                         })}
                     </div>
+
+                    <div className="flex gap-0.5 justify-evenly">
+                        <div className="flex-1 border">
+                            Heures
+                        </div>
+
+                        {currentMonth?.weeks[currentNumberWeek].map((week, index: number) => {
+                            return (<div className="flex-1 border p-1">
+                                {week?.number_day}
+                            </div>);
+                        })}
+
+                    </div>
+
                     <div className="flex gap-0.5 justify-evenly">
                         <div className="flex-1 flex flex-col">
                             {currentMonth?.hours.map((hour, index: number) => {
                                 return <CellHoursCalendar key={index} useHour={hour}/>;
                             })}
                         </div>
-                        {currentMonth?.weeks[0].map((week, index: number) => {
-                            return (<div className={`flex-1 flex flex-col text-center border`}
-                                         key={index}>
+                        {currentMonth?.weeks[currentNumberWeek].map((week, index: number) => {
+                            return (<>
+                                <div className={`flex-1 flex flex-col text-center border`}
+                                     key={index}>
                                     {week.hours.map((hour, index: number) => (
                                         <CellEventCalendar key={index} hour={hour} week={week}/>
                                     ))}
                                 </div>
-                            );
+                            </>);
                         })}
                     </div>
                 </div>
