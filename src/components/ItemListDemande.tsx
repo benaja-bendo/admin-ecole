@@ -57,10 +57,10 @@ export default function ItemListDemande({title}: { title: string }) {
             <MyModal open={open} onClose={setOpen} title="Plus informations">
                 <Sheet>
                     <Sheet sx={{
-                            display: 'flex',
-                            gap: 2,
-                            mb: 2,
-                        }}>
+                        display: 'flex',
+                        gap: 2,
+                        mb: 2,
+                    }}>
                         <img
                             src={"https://via.placeholder.com/150"}
                             alt="user image profile" className="w-full h-full"/>

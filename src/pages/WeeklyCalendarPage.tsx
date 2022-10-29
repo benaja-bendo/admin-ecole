@@ -4,7 +4,7 @@ import React, {
     useState,
 } from "react";
 import BasicBreadcrumbs from "../components/BasicBreadcrumbs";
-import {Divider, Sheet, Typography} from "@mui/joy";
+import {CircularProgress, Divider, Sheet, Typography} from "@mui/joy";
 import {MonthCalendarModel} from "../models/MonthCalendarModel";
 import {CalendarModel} from "../models/CalendarModel";
 import HeaderCalendar from "../components/CalendarComponents/HeaderCalendar";
@@ -51,7 +51,8 @@ export default function WeeklyCalendarPage() {
 
     if (loading) {
         return <div className="h-screen w-full grid place-items-center">
-            <BubbleLoading className="h-14 w-14"/>
+            {/*<BubbleLoading className="h-14 w-14"/>*/}
+            <CircularProgress variant="solid" size="lg" />
         </div>;
     } else {
         if (showSheet) {

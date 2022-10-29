@@ -3,18 +3,18 @@ import {Modal, ModalClose, Sheet, Typography} from "@mui/joy";
 
 export default function MyModal(
     {
+        focus = true,
         open,
         onClose,
         title,
         children
-    }: { open: boolean, onClose: (b: boolean) => void, title: string, children: React.ReactNode })
-{
+    }: { focus?: boolean, open: boolean, onClose: (b: boolean) => void, title: string, children: React.ReactNode }) {
     return (
         <Modal
             aria-labelledby="modal-title"
             aria-describedby="modal-desc"
             open={open}
-            onClose={() => onClose(false)}
+            onClose={() => focus && onClose(false)}
             sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
         >
             <Sheet

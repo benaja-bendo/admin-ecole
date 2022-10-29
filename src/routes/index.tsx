@@ -16,6 +16,9 @@ import PublicPage from "../pages/PublicPage";
 import FacturePage from "../pages/FacturePage";
 import SettingsPage from "../pages/SettingsPage";
 import NotFound from "../pages/NotFound";
+import CoursPage from "../pages/CoursPage";
+import ExercicePage from "../pages/ExercicePage";
+import NotificationsPage from "../pages/NotificationsPage";
 
 const router = createBrowserRouter([
     {
@@ -32,12 +35,24 @@ const router = createBrowserRouter([
                 element: <WeeklyCalendarPage/>,
             },
             {
+                path: "notifications",
+                element: <NotificationsPage/>,
+            },
+            {
                 path: "classroom",
                 element: <ClassRoomPage/>,
             },
             {
                 path: "messages",
                 element: <MessagePage/>,
+            },
+            {
+                path: "cours",
+                element: <CoursPage/>,
+            },
+            {
+                path: "exercices",
+                element: <ExercicePage/>,
             },
             {
                 path: "apprenants",

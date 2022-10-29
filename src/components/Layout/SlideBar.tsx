@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import {ChartBarIcon} from "../../icons/ChartBarIcon";
 import {WeekIcon} from "../../icons/WeekIcon";
 import {ApprenantIcon} from "../../icons/ApprenantIcon";
@@ -10,8 +10,11 @@ import {SettingsIcon} from "../../icons/settingsIcon";
 import {WalletIcon} from "../../icons/WalletIcon";
 import {ClassRoomIcon} from "../../icons/ClassRoomIcon";
 import {MessageTextIcon} from "../../icons/MessageTextIcon";
+import {StoriesIcon} from "../../icons/StoriesIcon";
+import {ExerciceIcon} from "../../icons/ExerciceIcon";
+import {BellIcon} from "../../icons/BellIcon";
 
-const items_g = [
+const section_general = [
     {
         name: "General",
         isTitle: true,
@@ -30,10 +33,16 @@ const items_g = [
     },
     {
         isTitle: false,
-        name: "Gestion des classes",
-        icon: <ClassRoomIcon/>,
-        path: "/classroom",
+        name: "Notifications",
+        icon: <BellIcon/>,
+        path: "/notifications",
     },
+    // {
+    //     isTitle: false,
+    //     name: "Gestion des classes",
+    //     icon: <ClassRoomIcon/>,
+    //     path: "/classroom",
+    // },
     {
         isTitle: false,
         name: "Messages",
@@ -41,7 +50,25 @@ const items_g = [
         path: "/messages",
     },
 ];
-const items_u = [
+const section_contenus = [
+    {
+        name: "Gestion des contenus",
+        isTitle: true,
+    },
+    {
+        isTitle: false,
+        name: "Cours",
+        icon: <StoriesIcon/>,
+        path: "/cours",
+    },
+    {
+        isTitle: false,
+        name: "Exercices",
+        icon: <ExerciceIcon/>,
+        path: "/exercices",
+    },
+];
+const section_users = [
     {
         isTitle: true,
         name: "Gestion des utilisateurs",
@@ -71,7 +98,7 @@ const items_u = [
         path: "/admin-ecole",
     },
 ];
-const items_s = [
+const section_page = [
     {
         name: "informations public",
         isTitle: true,
@@ -83,7 +110,7 @@ const items_s = [
         path: "/public-page",
     }
 ];
-const items_p = [
+const section_preference = [
     {
         name: "paramètres",
         isTitle: true,
@@ -105,10 +132,11 @@ const items_p = [
 export default function SlideBar() {
     return (<>
         <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
-            <ListItems items={items_g}/>
-            <ListItems items={items_u}/>
-            <ListItems items={items_s}/>
-            <ListItems items={items_p}/>
+            <ListItems items={section_general}/>
+            <ListItems items={section_contenus}/>
+            <ListItems items={section_users}/>
+            <ListItems items={section_page}/>
+            <ListItems items={section_preference}/>
         </div>
     </>);
 }
@@ -135,12 +163,23 @@ const ListItems = ({items}: { items: any }) => {
 
 const Item = ({item}: any) => {
     return (<li>
-        <Link to={item.path}
-              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-gray-50 border-l-4 border-transparent hover:border-blue-500 pr-6 transition duration-75">
-            <span className="inline-flex justify-center items-center ml-4">
-                            {item.icon}
-                        </span>
+        <NavLink to={item.path}
+                 className={({isActive}) => isActive ?
+                     "relative flex flex-row items-center h-11 focus:outline-none bg-blue-800 text-gray-50 border-l-4 border-transparent border-blue-500 pr-6 transition duration-75"
+                     :
+                     "relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-gray-50 border-l-4 border-transparent hover:border-blue-500 pr-6 transition duration-75"}>
+                     <span className="inline-flex justify-center items-center ml-4">
+                             {item.icon}
+                                 </span>
             <span className="ml-2 text-sm tracking-wide truncate">{item.name}</span>
-        </Link>
+        </NavLink>
     </li>);
+    //     <Link to={item.path}
+    //           className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-gray-50 border-l-4 border-transparent hover:border-blue-500 pr-6 transition duration-75">
+    //         <span className="inline-flex justify-center items-center ml-4">
+    //                         {item.icon}
+    //                     </span>
+    //         <span className="ml-2 text-sm tracking-wide truncate">{item.name}</span>
+    //     </Link>
+    // </li>);
 }
