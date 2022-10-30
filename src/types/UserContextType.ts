@@ -1,5 +1,5 @@
-import {User} from "../models/User";
+import {UserModel} from "../models/UserModel";
 
 export interface UserContextType {
-    user?: User | {};
+    user?: UserModel | {};
 }

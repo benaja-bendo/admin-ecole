@@ -1,13 +1,13 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {User} from "../../models/User";
+import {UserModel} from "../../models/UserModel";
 
-const initialState: User = {} as User;
+const initialState: UserModel = {} as UserModel;
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        storeUser: (state: any, action: PayloadAction<User>) => {
-            return {...action.payload as User};
+        storeUser: (state: any, action: PayloadAction<UserModel>) => {
+            return {...action.payload as UserModel};
         }
     }
 } as any)

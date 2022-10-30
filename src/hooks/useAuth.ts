@@ -2,13 +2,13 @@ import {useEffect, useState} from "react";
 import useLocalStorage from "./useLocalStorage";
 import http from "../services/http";
 import {useLocation, useMatches, useNavigate} from "react-router-dom";
-import {User} from "../models/User";
+import {UserModel} from "../models/UserModel";
 import {useDispatch} from "react-redux";
 import {storeUser} from "../features/user/userSlice";
 
 const useAuth = () => {
     const [token, setToken] = useLocalStorage("access_token", "");
-    // const [user, setUser] = useState({} as User);
+    // const [user, setUser] = useState({} as UserModel);
     const [loadingLogin, setLoadingLogin] = useState(false);
     const [errorLogin, setErrorLogin] = useState(null as string | null);
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const useAuth = () => {
     const logout = async () => {
         await http.post("/logout").then(() => {
             setToken("");
-            // setUser({} as User);
+            // setUser({} as UserModel);
             // setIsConnect(false);
         });
     };
@@ -26,7 +26,7 @@ const useAuth = () => {
         setLoadingLogin(true);
         try {
             const res = await http.post("/login", {email, password});
-            const user: User = res.data.data.user as User;
+            const user: UserModel = res.data.data.user as UserModel;
             dispatch(storeUser(user));
             setToken(res.data.data.access_token);
             navigate('/dashboard');

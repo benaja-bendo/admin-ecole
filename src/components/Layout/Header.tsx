@@ -1,7 +1,7 @@
 import { UserIcon } from "../../icons/UserIcon";
 import { BellIcon } from "../../icons/BellIcon";
 import ButtonLogout from "../ButtonLogout";
-import { User } from "../../models/User";
+import { UserModel } from "../../models/UserModel";
 import { EcoleModel } from "../../models/EcoleModel";
 import { useSelector } from "react-redux";
 import { HamburgerSidebarIcon } from "../../icons/HamburgerSidebarIcon";

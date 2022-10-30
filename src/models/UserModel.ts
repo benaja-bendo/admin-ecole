@@ -1,5 +1,5 @@
 import { RoleModel } from "./RoleModel";
-export type User = {
+export type UserModel = {
   id: number;
   name: string;
   slug: string;
