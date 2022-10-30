@@ -1,4 +1,4 @@
-export type Apprenant = {
+export type ApprenantModel = {
     id: number;
     name: string;
     email: string;
