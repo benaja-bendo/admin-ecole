@@ -1,9 +1,9 @@
 export type ContentModel = {
-    id: number | null;
+    id?: number | null;
     content: string | null;
     type_content: "video" | "texte" | "image" | "audio" | null;
-    contentable_id: number | null;
-    contentable_type: string | null;
-    created_at: string | null;
-    updated_at: string | null;
+    contentable_id?: number | null;
+    contentable_type?: string | null;
+    created_at?: string | null;
+    updated_at?: string | null;
 }

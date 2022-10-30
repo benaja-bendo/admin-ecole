@@ -5,9 +5,9 @@ import {ContentModel} from "./ContentModel";
 import {AuthorModel} from "./AuthorModel";
 
 export type CoursModel = {
-    id: number | null;
+    id?: number | null;
     name: string;
-    slug: string | null;
+    slug?: string | null;
     description: string | null;
     path_image: string ;
     is_active: boolean | 1 | 0;
