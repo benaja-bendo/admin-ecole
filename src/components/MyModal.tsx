@@ -16,6 +16,7 @@ export default function MyModal(
             open={open}
             onClose={() => focus && onClose(false)}
             sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+
         >
             <Sheet
                 variant="outlined"

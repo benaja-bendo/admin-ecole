@@ -35,7 +35,6 @@ const ListTapPanel = [
 
 export default function DashboardPage() {
     return (<>
-        <BasicBreadcrumbs/>
         <Tabs aria-label="Basic tabs" defaultValue={0}>
             <TabList>
                 {ListItemTab.map((item, index) => (

@@ -4,7 +4,7 @@ import React, {
     useState,
 } from "react";
 import BasicBreadcrumbs from "../components/BasicBreadcrumbs";
-import {CircularProgress, Divider, Sheet, Typography} from "@mui/joy";
+import {Button, CircularProgress, Divider, Sheet, Typography} from "@mui/joy";
 import {MonthCalendarModel} from "../models/MonthCalendarModel";
 import {CalendarModel} from "../models/CalendarModel";
 import HeaderCalendar from "../components/CalendarComponents/HeaderCalendar";
@@ -12,6 +12,7 @@ import BodyCalendar from "../components/CalendarComponents/BodyCalendar";
 import {BubbleLoading} from "../icons/BubbleLoading";
 import {getCurrentMonthName, getFullYear, getNumberCurrentMonth} from "../utils/functions";
 import CreateCalendar from "../components/CalendarComponents/CreateCalendar";
+import HeaderTypo from "../components/HeaderTypo";
 
 export default function WeeklyCalendarPage() {
     const idEcole = 1;
@@ -52,7 +53,7 @@ export default function WeeklyCalendarPage() {
     if (loading) {
         return <div className="h-screen w-full grid place-items-center">
             {/*<BubbleLoading className="h-14 w-14"/>*/}
-            <CircularProgress variant="solid" size="lg" />
+            <CircularProgress variant="solid" size="lg"/>
         </div>;
     } else {
         if (showSheet) {
@@ -61,19 +62,9 @@ export default function WeeklyCalendarPage() {
             </div>
         } else {
             return (<>
-                <BasicBreadcrumbs/>
-                <Sheet
-                    sx={{
-                        width: "100%",
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}>
-                    <Typography level="h3" component="h2" fontWeight="md">
-                        Emploi du temps
-                    </Typography>
-                    <Divider sx={{my: "16px"}}/>
-                    <div className="border rounded-md p-1">
+                <div className="h-screen w-full flex flex-col">
+                    <HeaderTypo title={"Emploi du temps"}/>
+                    <div className="border rounded-md p-1 mt-2">
                         <HeaderCalendar
                             currentNumberWeek={currentNumberWeek}
                             setCurrentNumberWeek={setCurrentNumberWeek}
@@ -85,7 +76,7 @@ export default function WeeklyCalendarPage() {
                             calendar={calendar}
                             currentNumberMonth={currentNumberMonth}/>
                     </div>
-                </Sheet>
+                </div>
             </>)
         }
     }

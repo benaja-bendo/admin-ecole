@@ -57,16 +57,16 @@ const section_contenus = [
     },
     {
         isTitle: false,
-        name: "Cours",
+        name: "Gestion des Cours",
         icon: <StoriesIcon/>,
         path: "/cours",
     },
-    {
-        isTitle: false,
-        name: "Exercices",
-        icon: <ExerciceIcon/>,
-        path: "/exercices",
-    },
+    // {
+    //     isTitle: false,
+    //     name: "Gestion des exercices",
+    //     icon: <ExerciceIcon/>,
+    //     path: "/exercices",
+    // },
 ];
 const section_users = [
     {
@@ -83,7 +83,7 @@ const section_users = [
         isTitle: false,
         name: "Professors",
         icon: <TeacherFill/>,
-        path: "/ProfessorPage",
+        path: "/professor",
     },
     {
         isTitle: false,
@@ -174,12 +174,4 @@ const Item = ({item}: any) => {
             <span className="ml-2 text-sm tracking-wide truncate">{item.name}</span>
         </NavLink>
     </li>);
-    //     <Link to={item.path}
-    //           className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 text-white-600 hover:text-gray-50 border-l-4 border-transparent hover:border-blue-500 pr-6 transition duration-75">
-    //         <span className="inline-flex justify-center items-center ml-4">
-    //                         {item.icon}
-    //                     </span>
-    //         <span className="ml-2 text-sm tracking-wide truncate">{item.name}</span>
-    //     </Link>
-    // </li>);
 }

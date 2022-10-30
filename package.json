@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.6",
     "@mui/joy": "^5.0.0-alpha.48",
     "@mui/lab": "^5.0.0-alpha.104",
-    "@mui/material": "^5.10.10",
+    "@mui/material": "^5.10.11",
     "@mui/system": "5.10.5",
-    "@mui/x-data-grid": "^5.17.8",
+    "@mui/x-data-grid": "^5.17.9",
     "@reduxjs/toolkit": "^1.8.6",
     "axios": "^1.1.2",
     "dotenv": "^16.0.3",
