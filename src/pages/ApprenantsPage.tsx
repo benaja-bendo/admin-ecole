@@ -1,4 +1,4 @@
-import {ApprenantModel} from "../models/ApprenantModel";
+import {UserModel} from "../models/UserModel";
 import React, {useEffect, useState} from "react";
 import http from "../services/http";
 import BasicBreadcrumbs from "../components/BasicBreadcrumbs";
@@ -9,7 +9,7 @@ import Add from "@mui/icons-material/Add";
 import HeaderTypo from "../components/HeaderTypo";
 
 export default function ApprenantsPage() {
-    const [apprenants, setApprenants] = useState<ApprenantModel[]>([]);
+    const [apprenants, setApprenants] = useState<UserModel[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [openSearch, setOpenSearch] = useState<boolean>(false);
@@ -18,7 +18,7 @@ export default function ApprenantsPage() {
         setLoading(true);
         try {
             const response = await http.get("/users?role=apprenant");
-            setApprenants(response.data.data as ApprenantModel[]);
+            setApprenants(response.data.data as UserModel[]);
         } catch (e: any) {
             setError(e?.message);
         } finally {
@@ -49,7 +49,7 @@ const ListApprenants = ({
                             apprenants,
                             loading,
                             erros
-                        }: { apprenants: ApprenantModel[], loading: boolean, erros?: any }) => {
+                        }: { apprenants: UserModel[], loading: boolean, erros?: any }) => {
     return (<>
         <div className="flex flex-wrap gap-4">
             {loading ? <div>loading...</div> : apprenants.map((apprenant, index) => <ApprenantCard key={index}
@@ -58,7 +58,7 @@ const ListApprenants = ({
     </>);
 }
 
-const ApprenantCard = ({apprenant}: { apprenant: ApprenantModel }) => {
+const ApprenantCard = ({apprenant}: { apprenant: UserModel }) => {
     return (<>
         <div className="flex flex-col gap-2 bg-white rounded-md p-4 shadow-md">
             <div className="flex gap-2">
