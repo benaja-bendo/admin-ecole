@@ -34,7 +34,7 @@ export default function ApprenantsPage() {
     }, []);
 
     return (<>
-        <HeaderTypo title="Vu sur les apprenants">
+        <HeaderTypo title="Gestion des élèves">
             <div className="flex gap-1">
                 <IconButton onClick={() => setOpenSearch(!openSearch)} color={openSearch ? "danger" : "primary"}>
                     {openSearch ? <CloseIcon/> : <SearchIcon/>}

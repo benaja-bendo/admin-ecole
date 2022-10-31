@@ -30,7 +30,7 @@ export default function ProfessorPage() {
         }
     }, []);
     return (<>
-        <HeaderTypo title="Vu sur les apprenants">
+        <HeaderTypo title="Gestion des professeurs">
             <div className="flex gap-1">
                 <IconButton onClick={() => setOpenSearch(!openSearch)} color={openSearch ? "danger" : "primary"}>
                     {openSearch ? <CloseIcon/> : <SearchIcon/>}
