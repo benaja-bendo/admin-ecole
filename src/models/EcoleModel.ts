@@ -19,7 +19,7 @@ export type EcoleModel = {
         created_at: string;
         updated_at: string;
     }];
-    site_web: string | null;
+    site_web: string;
     category: "private" | "public";
     type_ecole: TypeEcoleModel[];
     cycles: CycleModel[];
