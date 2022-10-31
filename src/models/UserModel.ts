@@ -7,7 +7,7 @@ export type UserModel = {
   last_name: string;
   image_path: string;
   address: string;
-  genre: G;
+  genre: "M" | "F";
   city: string;
   phone: string;
   email: string;
@@ -15,8 +15,8 @@ export type UserModel = {
   created_at: Date;
   updated_at: Date;
   roles: RoleModel[];
-  demandes: any[];
-  ecoles: any[];
+  demandes?: any[];
+  ecoles?: any[];
 };
 
 enum G {

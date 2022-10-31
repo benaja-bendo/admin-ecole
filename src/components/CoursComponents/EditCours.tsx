@@ -11,7 +11,7 @@ export default function EditCours({content}: { content: CoursModel }) {
     const [contentState, setContentState] = useState<CoursModel>(content);
     const handleEdit = () => {
         console.log("edit");
-        http.post(`/cours/${content.id}`, contentState,{
+        http.post(`/cours/${content.id}`, contentState, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -52,7 +52,7 @@ export default function EditCours({content}: { content: CoursModel }) {
 }
 
 const ContentCours = ({cours, setCours}: { cours: CoursModel, setCours: (b: CoursModel) => void }) => {
-    const [content, setContent] = useState<string|null>(cours.contents[0]?.content);
+    const [content, setContent] = useState<string | null>(cours.contents[0]?.content);
     useEffect(() => {
         setCours({
             ...cours, contents: [{content: content, type_content: 'texte'}]

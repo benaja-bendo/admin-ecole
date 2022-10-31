@@ -85,16 +85,16 @@ export default function PublicPage() {
                     <a href={`mailto:${ecole?.email}`} target="_blank" rel="noreferrer">{ecole?.email}</a>
                 </div>
                 <div className="mb-4">
-                    <Typography level="h4" component="h4" className="font-bold">Notre localisation</Typography>
+                    <Typography level="h4" component="h4" className="font-bold">La localisation de l'école</Typography>
                     <Typography level="body1" color="danger" component="p">pas disponible</Typography>
                 </div>
                 <div className="mb-4">
-                    <Typography level="h4" component="h4" className="font-bold">Nobre étudiants déjà
-                        inscrit</Typography>
-                    <Typography level="body1" color="danger" component="p">{ecole.users.length}</Typography>
+                    <Typography level="h4" component="h4" className="font-bold">Membres de l'école</Typography>
+                    <Typography level="body1" color="danger"
+                                component="p">{ecole.users.length} : {ecole.users.length > 0 ? "membres" : "membre"}</Typography>
                 </div>
                 <div className="mb-4">
-                    <Typography level="h4" component="h4" className="font-bold">Les Images de votre écoles</Typography>
+                    <Typography level="h4" component="h4" className="font-bold">Quelques images de l'écoles</Typography>
                     <div className="flex flex-wrap">
                         {
                             ecole?.images_ecole?.map((image, index) => (

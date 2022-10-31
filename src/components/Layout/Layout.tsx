@@ -23,13 +23,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <div className="h-screen w-full flex flex-col overflow-hidden">
         <Header slide={slide} setSlide={setSlide} />
-        <div className="h-full flex-1 overflow-y-scroll grid grid-cols-12">
+        <div className="h-full flex-1 grid grid-cols-12 overflow-y-auto">
           {slide && (
-            <div className="col-span-12 md:col-span-3 xl:col-span-2 shadow">
+            <div className="col-span-12 md:col-span-3 xl:col-span-2 shadow overflow-y-auto">
               <SlideBar />
             </div>
           )}
-          <div className="col-span-12 md:col-span-9 xl:col-span-10 px-6 mt-8">
+          <div className="col-span-12 md:col-span-9 xl:col-span-10 px-6 mt-4 overflow-y-auto">
             {children}
           </div>
         </div>
