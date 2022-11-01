@@ -63,7 +63,7 @@ export default function PublicPage() {
 
                 </div>
                 <div className="mb-4">
-                    <Typography level="h4" component="h4" className="font-bold">Les cycles que nous gerons?</Typography>
+                    <Typography level="h4" component="h4" className="font-bold">Nos cycles</Typography>
                     {
                         ecole.cycles.length > 0 ?
                             <List>

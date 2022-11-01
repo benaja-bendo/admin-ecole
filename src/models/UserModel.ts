@@ -16,7 +16,13 @@ export type UserModel = {
   updated_at: Date;
   roles: RoleModel[];
   demandes?: any[];
-  ecoles?: any[];
+  ecoles?: [{
+    initiateur: string;
+    demande_id: number;
+    ecole_id: number;
+    ecole_name: string;
+    accept_at: string;
+  }];
 };
 
 enum G {

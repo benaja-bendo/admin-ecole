@@ -49,7 +49,7 @@ const ContentCours = ({cours, setCours}: { cours: CoursModel, setCours: (b: Cour
     const [content, setContent] = useState<string>('');
     useEffect(() => {
         setCours({
-            ...cours, contents: [{content: content, type_content: 'texte'}]
+            ...cours, contents: [{content: content, type_content: 'text'}]
         });
     }, [content])
 
