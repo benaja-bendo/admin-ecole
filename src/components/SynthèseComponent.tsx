@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {TaskIcon} from "../icons/TaskIcon";
 import {Typography} from "@mui/joy";
 import completing from "../assets/completing.png";
@@ -6,8 +6,26 @@ import {CheckCircleIcon} from "../icons/CheckCircleIcon";
 import {ListDemande} from "./ItemListDemande";
 import {ListMessage} from "./ItemListMessage";
 import CardTaskComponent from "./CardTaskComponent";
+import http from "../services/http";
+import {useSelector} from "react-redux";
+import {UserModel} from "../models/UserModel";
+import {DemandeModel} from "../models/DemandeModel";
 
 export default function SynthSeComponent() {
+    const user = useSelector((state: any) => state.user as UserModel);
+    const [demandes, setDemandes] = useState([] as DemandeModel[]);
+
+    const getDemandes = async () => {
+        const response = await http.post('/demandes', {ecole_id: user.id});
+        // console.log('response', response.data);
+        setDemandes(response.data.data as DemandeModel[]);
+    }
+    useEffect(() => {
+        getDemandes();
+        return () => {
+            setDemandes([]);
+        }
+    }, [])
     return (<div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
             <CardTaskComponent titre="Status" more={false} link="">
@@ -16,10 +34,12 @@ export default function SynthSeComponent() {
                     <Typography level="body1" variant="plain" textColor="GrayText">Votre compte est activé</Typography>
                 </div>
             </CardTaskComponent>
+
             <CardTaskComponent titre="Demandes"
                                more={false} link="">
-                <ListDemande listDemande={[]}/>
+                <ListDemande listDemande={demandes}/>
             </CardTaskComponent>
+
             <CardTaskComponent titre="Messages reçus" more={true} link="/messages">
                 <ListMessage listMessage={[]}/>
             </CardTaskComponent>
